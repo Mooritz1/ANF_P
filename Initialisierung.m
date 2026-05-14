@@ -67,6 +67,14 @@ costmap = VorlageCostmapErstellen();
 % (Nimmt die X, Y und Theta Werte aus der ersten Zeile der StartPose Spalte)
 startPose = [routePlan.StartPose(1,1), routePlan.StartPose(1,2), routePlan.StartPose(1,3)];
 
+% Fahrzeugdimensionen aus Costmap holen
+vehDims = costmap.CollisionChecker.VehicleDimensions;
+
+%Für Aufgabe 5
+% Dynamische Parameter für Lateral Controller Stanley (Dynamic bicycle model)
+lf                  = vehDims.FrontOverhang + (vehDims.Wheelbase / 2);  % CoM → Vorderachse
+lr                  = vehDims.RearOverhang  + (vehDims.Wheelbase / 2);  % CoM → Hinterachse
+
 % Aufruf der helper-Datei zur Erstellung der Bus-Signale
 helperCreateBus;
 
