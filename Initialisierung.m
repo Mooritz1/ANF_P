@@ -72,8 +72,8 @@ vehDims = costmap.CollisionChecker.VehicleDimensions;
 
 %Für Aufgabe 5
 % Dynamische Parameter für Lateral Controller Stanley (Dynamic bicycle model)
-lf                  = vehDims.FrontOverhang + (vehDims.Wheelbase / 2);  % CoM → Vorderachse
-lr                  = vehDims.RearOverhang  + (vehDims.Wheelbase / 2);  % CoM → Hinterachse
+lf   = vehDims.FrontOverhang + (vehDims.Wheelbase / 2);  % CoM → Vorderachse
+lr   = vehDims.RearOverhang  + (vehDims.Wheelbase / 2);  % CoM → Hinterachse
 
 % Aufruf der helper-Datei zur Erstellung der Bus-Signale
 helperCreateBus;
