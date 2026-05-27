@@ -57,8 +57,6 @@ clear;
 % Laden des routePlan
 data = load('routePlanSL.mat');
 routePlan = data.routePlan;
-%routePlanStruct = table2struct(routePlan); ALTER CODE DER AUS EINEM
-%VERSUCH STAMMT (LIEF NICHT GUT)
 
 % Aufruf der Costmap-Funktion, die in Aufgabe 1 erstellt wurde
 costmap = VorlageCostmapErstellen();
