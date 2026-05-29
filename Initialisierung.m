@@ -52,7 +52,7 @@
 % gestartet.
 
 clc;
-clear;
+clear all;
 
 % Laden des routePlan
 data = load('routePlanSL.mat');
