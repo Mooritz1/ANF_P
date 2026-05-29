@@ -52,6 +52,7 @@
 % gestartet.
 
 clc;
+clear;
 clear all;
 
 % Laden des routePlan
