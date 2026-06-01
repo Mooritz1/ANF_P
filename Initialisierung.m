@@ -66,6 +66,10 @@ costmap = VorlageCostmapErstellen();
 % (Nimmt die X, Y und Theta Werte aus der ersten Zeile der StartPose Spalte)
 startPose = [routePlan.StartPose(1,1), routePlan.StartPose(1,2), routePlan.StartPose(1,3)];
 
+% Endpose muss Extrahiert werden
+% (Nimmt die X, Y und Theta Werte aus der ersten Zeile der EndPose Spalte)
+EndPose = [routePlan.EndPose(1,2), routePlan.EndPose(1,2), routePlan.EndPose(1,3)];
+
 % Fahrzeugdimensionen aus Costmap holen
 vehDims = costmap.CollisionChecker.VehicleDimensions;
 
