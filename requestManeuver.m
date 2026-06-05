@@ -47,33 +47,6 @@ function [y] = plannerSettings(u)
 % möglich.                                 |           |       |
 %                                    Variablenname  Zeilennr. Spalte
 
-if isempty(GoalIndex)
-    GoalIndex = 1;  % Initialisierung beim ersten Aufruf
-end
-
-% Aktuelle Pose und RoutePlan aus Eingabe holen
-% (Struktur abhängig davon, wie u im BehaviorPlanner aufgebaut ist)
-currentPose    = u(1:3);          % [x, y, theta]
-currentSpeed   = u(4);
-routePlanStruct = u(5);           % oder als globale Variable / aus Workspace
-
-%% Nächste Zielpose aus dem RoutePlan holen
-goalPose = routePlanStruct(GoalIndex).EndPose;
-
-%% RRT-Einstellungen (Aufgabe 13 – Grundstruktur schon vorbereiten)
-plannerConfig.ConnectionDistance = 10;
-plannerConfig.MinIterations      = 1000;
-plannerConfig.GoalTolerance      = [0.5, 0.5, 5];
-plannerConfig.MinTurningRadius   = 20;  % Standardwert
-
-%% Ausgabe zusammenstellen
-y.GoalPose      = goalPose;
-y.PlannerConfig = plannerConfig;
-
-%% GoalIndex für den nächsten Aufruf erhöhen
-GoalIndex = GoalIndex + 1;
-
-
 %------------
 %% Aufgabe 13
 % Einstellungen des RRT-Algorithmus
