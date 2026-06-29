@@ -1,3 +1,4 @@
+%% 
 %% Vorlage Initialisierungsskript
 % Dieses Skript soll zu Beginn die nötigen Variablen und Matlabskripte
 % aufrufen, die das Simulinkmodell benötigt, um das Automated Valet Parking
@@ -68,7 +69,7 @@ startPose = [routePlan.StartPose(1,1), routePlan.StartPose(1,2), routePlan.Start
 
 % Endpose muss Extrahiert werden
 % (Nimmt die X, Y und Theta Werte aus der ersten Zeile der EndPose Spalte)
-EndPose = [routePlan.EndPose(1,2), routePlan.EndPose(1,2), routePlan.EndPose(1,3)];
+EndPose = [routePlan.EndPose(1,1), routePlan.EndPose(1,2), routePlan.EndPose(1,3)];
 
 % Fahrzeugdimensionen aus Costmap holen
 vehDims = costmap.CollisionChecker.VehicleDimensions;
@@ -77,6 +78,15 @@ vehDims = costmap.CollisionChecker.VehicleDimensions;
 % Dynamische Parameter für Lateral Controller Stanley (Dynamic bicycle model)
 lf   = vehDims.FrontOverhang + (vehDims.Wheelbase / 2);  % CoM → Vorderachse
 lr   = vehDims.RearOverhang  + (vehDims.Wheelbase / 2);  % CoM → Hinterachse
+
+%% Aufgabe 12
+% Für die Umsetzung der Aufgabe 12 müssen die Bus-Signale für die
+% Geschwindigkeitsvorgaben und die Planner-Konfiguration vor dem Öffnen des
+% Modells im Base Workspace erstellt werden. Dies erfolgt über den Aufruf
+% der helper-Datei "helperCreateBus".
+% Damit die Namen und Datentypen mit den in requestManeuver.m erzeugten
+% Structs übereinstimmen, müssen die Busobjekte vor dem Modell-Update im
+% Workspace vorhanden sein.
 
 % Aufruf der helper-Datei zur Erstellung der Bus-Signale
 helperCreateBus;
@@ -87,3 +97,6 @@ open_system('AutomatedValetParking.slx');
 
 % Simulink Diagramm updaten, damit die geladenen Workspace-Variablen ins Modell übernommen werden
 set_param('AutomatedValetParking', 'SimulationCommand', 'update');
+
+% Durch den Befehl "sim('object');" wird die Simulation automatisch gestartet.
+sim('AutomatedValetParking');
